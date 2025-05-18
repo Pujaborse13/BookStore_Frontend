@@ -22,9 +22,7 @@
 
     <!-- Book cards -->
   <div class="books-grid">
-    <!-- <div class="book-card" *ngFor="let book of books">   -->
-      <!-- <div class="book-card"  *ngFor="let book of books | pagination: currentPage : pageSize"> -->
-        <div class="book-card" *ngFor="let book of books | slice:(currentPage - 1) * pageSize:(currentPage) * pageSize">
+    <div class="book-card" *ngFor="let book of filteredBooks | slice:(currentPage - 1) * pageSize:(currentPage) * pageSize">
 
 
       <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />

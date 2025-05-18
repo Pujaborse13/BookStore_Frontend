@@ -11,7 +11,7 @@
       <div class="search-bar">
         <div class="search-container">
           <mat-icon>search</mat-icon>
-          <input type="text" placeholder="Search ..." />
+          <input type="text" placeholder="Search ..." [(ngModel)]="searchTerm" />
         </div>
       </div>
   
@@ -30,12 +30,17 @@
   
     <!-- Main Content Placeholder -->
     <div class="main-content">
-      <!-- Page content goes here -->
+      <app-books [searchTerm]= "searchTerm"></app-books>
+      
     </div>
   
+    
     <!-- Footer -->
     <footer class="footer">
       <p>Copyright © 2020, Bookstore Private Limited. All Rights Reserved</p>
     </footer>
+
+   
+
   </div>
   
