@@ -1,8 +1,40 @@
-<div class="book-container">
-    <div *ngFor="let book of books" class="book-card">
-      <h3>{{ book.bookName }}</h3>
-      <p>Author: {{ book.author }}</p>
-      <p>Price: ₹{{ book.discountPrice }}</p>
+<!-- <div class="book-container">
+  <div class="book-card" *ngFor="let book of books">
+    <img [src]="book.image" alt="{{ book.title }}" class="book-image" />
+    <div class="book-details">
+      <h3 class="book-title">{{ book.title }}</h3>
+      <p class="book-author">{{ book.author }}</p>
+      <p class="book-price">₹{{ book.price }}</p>
+       <button mat-raised-button color="primary" (click)="addToCart(book)">Add to Cart</button> 
     </div>
   </div>
-  
+</div> -->
+
+
+
+<div class="books-container">
+  <h2>Books <span class="book-length">({{ books.length }} Items)</span></h2>
+
+  <div class="books-grid">
+    <div class="book-card" *ngFor="let book of books">  
+      <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />
+
+      <div class="book-info">
+        <h3>{{ book.bookName }}</h3>
+        <p class="author">by {{ book.author }}</p>
+
+        <div class="rating-box">
+          <span class="rating-value">4.5 <mat-icon class="star-icon">star</mat-icon></span>
+          <span class="rating-count">(20)</span>
+        </div>
+
+        <div class="price">
+          <span class="new">Rs. {{ book.discountPrice }}</span>
+          <span class="old">Rs. {{ book.price }}</span>
+        </div>
+
+        <div *ngIf="book.quantity === 0" class="stock-overlay">OUT OF STOCK</div>
+      </div>
+    </div>
+  </div>
+</div>
