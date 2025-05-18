@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { BookService } from 'src/app/services/book/book.service';
 
 @Component({
@@ -11,6 +11,12 @@ export class BooksComponent {
   selectedSort: string = 'relevance';
   isDropdownOpen: boolean = false;
 
+  //for pagination
+  currentPage = 1;
+  pageSize = 6;
+  originalBooks: any[] = [];
+
+  // @Output() bookClicked = new EventEmitter<any>();
 
 
   constructor(private bookService: BookService) {}
@@ -84,16 +90,70 @@ export class BooksComponent {
       break;
 
     case 'newest':
-      // Ideally, add a new backend API like `/api/books/sortbynewest`
       this.books.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
       break;
 
     case 'relevance':
     default:
-      this.fetchBooks(); // re-fetch default order
+      this.fetchBooks(); 
       break;
   }
 }
+
+
+// filterBooks(): void 
+// {
+//   const term = this.searchTerm.trim().toLowerCase();
+//   if (term) 
+//   {
+//     this.books = this.originalBooks.filter(
+//       book =>
+//         book.bookName.toLowerCase().includes(term) ||
+//         book.author.toLowerCase().includes(term)
+//     );
+//   } 
+//   else 
+//   {
+//     this.books = [...this.originalBooks];
+//   }
+//   this.currentPage = 1; // reset pagination on search
+// }
+
+ 
+get totalPages(): number 
+{
+  return Math.ceil(this.books.length / this.pageSize);
+}
+
+get pages(): number[] 
+{
+  return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+}
+
+changePage(page: number): void 
+{
+  if (page >= 1 && page <= this.totalPages) 
+  {
+    this.currentPage = page;
+  }
+}
+
+prevPage(): void 
+{
+  if (this.currentPage > 1) 
+  {
+    this.currentPage--;
+  }
+}
+
+nextPage(): void 
+{
+  if (this.currentPage < this.totalPages) 
+  {
+    this.currentPage++;
+  }
+}
+
 
 
 }

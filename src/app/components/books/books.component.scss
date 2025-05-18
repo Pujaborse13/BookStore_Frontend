@@ -54,15 +54,15 @@
   color: #555;
 }
 
-/* Book Grid & Cards */
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr); /* exactly 4 books per row */
+  gap: 20px  20px;;
   padding: 20px 0;
 }
 
 .book-card {
+  // max-width: 250px;
   background: #fff;
   border: 1px solid #eee;
   border-radius: 4px;
@@ -172,6 +172,37 @@
   pointer-events: none;
 }
 
+
+//pagination
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: none;
+  background: #eee;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  min-width: 32px;
+}
+
+.pagination button.active {
+  background-color: #b71c1c;
+  color: #fff;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Responsive Rules */
 @media (max-width: 1024px) {
   .books-title {
@@ -246,3 +277,5 @@
     top: 40%;
   }
 }
+
+

@@ -22,7 +22,11 @@
 
     <!-- Book cards -->
   <div class="books-grid">
-    <div class="book-card" *ngFor="let book of books">  
+    <!-- <div class="book-card" *ngFor="let book of books">   -->
+      <!-- <div class="book-card"  *ngFor="let book of books | pagination: currentPage : pageSize"> -->
+        <div class="book-card" *ngFor="let book of books | slice:(currentPage - 1) * pageSize:(currentPage) * pageSize">
+
+
       <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />
 
       <div class="book-info">
@@ -42,4 +46,18 @@
       </div>
     </div>
   </div>
+
+      <!-- Pagination block -->
+      <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">&#8249;</button>
+
+        <button
+          *ngFor="let page of pages"
+          [class.active]="page === currentPage"
+          (click)="changePage(page)"
+        >
+          {{ page }}
+        </button>
+
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">&#8250;</button>
 </div>
