@@ -1,20 +1,26 @@
-<!-- <div class="book-container">
-  <div class="book-card" *ngFor="let book of books">
-    <img [src]="book.image" alt="{{ book.title }}" class="book-image" />
-    <div class="book-details">
-      <h3 class="book-title">{{ book.title }}</h3>
-      <p class="book-author">{{ book.author }}</p>
-      <p class="book-price">₹{{ book.price }}</p>
-       <button mat-raised-button color="primary" (click)="addToCart(book)">Add to Cart</button> 
-    </div>
-  </div>
-</div> -->
-
-
-
 <div class="books-container">
-  <h2>Books <span class="book-length">({{ books.length }} Items)</span></h2>
+  
+  <div class="books-header">
+    <h2 class="books-title">Books <span class="book-length">({{ books.length }} Items)</span></h2>
 
+          <div class="sort-dropdown">
+            <div class="dropdown-wrapper">
+              <select id="sortSelect"[(ngModel)]="selectedSort"(change)="sortBooks()"(focus)="isDropdownOpen = true"
+                      (blur)="isDropdownOpen = false">
+                <option value="relevance">Sort by Relevance</option>
+                <option value="lowToHigh">Price : Low to High</option>
+                <option value="highToLow">Price : High to Low</option>
+                <option value="newest">Newest Arrivals</option>
+              </select>
+
+              <mat-icon class="dropdown-icon">
+                {{ isDropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+              </mat-icon>
+            </div>
+          </div>
+  </div>
+
+    <!-- Book cards -->
   <div class="books-grid">
     <div class="book-card" *ngFor="let book of books">  
       <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />
@@ -23,17 +29,16 @@
         <h3>{{ book.bookName }}</h3>
         <p class="author">by {{ book.author }}</p>
 
-        <div class="rating-box">
-          <span class="rating-value">4.5 <mat-icon class="star-icon">star</mat-icon></span>
-          <span class="rating-count">(20)</span>
-        </div>
+              <div class="rating-box">
+                <span class="rating-value">4.5 <mat-icon class="star-icon">star</mat-icon></span>
+                <span class="rating-count">(20)</span>
+              </div>
 
-        <div class="price">
-          <span class="new">Rs. {{ book.discountPrice }}</span>
-          <span class="old">Rs. {{ book.price }}</span>
-        </div>
-
-        <div *ngIf="book.quantity === 0" class="stock-overlay">OUT OF STOCK</div>
+              <div class="price">
+                <span class="new">Rs. {{ book.discountPrice }}</span>
+                <span class="old">Rs. {{ book.price }}</span>
+              </div>
+            <div *ngIf="book.quantity === 0" class="stock-overlay">OUT OF STOCK</div>
       </div>
     </div>
   </div>

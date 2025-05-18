@@ -31,4 +31,39 @@ export class BookService {
     console.log('Headers:', httpOption);
     return this.http.getApi('/api/books', httpOption.headers)as Observable<any[]>;
   }
+
+  getBooksLowToHigh()
+  {
+    let httpOption = 
+    {
+      headers: new HttpHeaders(
+      {
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    console.log('Headers:', httpOption);
+    return this.http.getApi('/api/books/sortbookbypriceasc', httpOption.headers)as Observable<any[]>;
+  }
+
+  getBooksHighToLow()
+  {
+    let httpOption = 
+    {
+      headers: new HttpHeaders(
+      {
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    console.log('Headers:', httpOption);
+    return this.http.getApi('/api/books/searchbypricedesc', httpOption.headers)as Observable<any[]>;
+  }
+
+
+
+
+
+
+
 }
