@@ -39,6 +39,7 @@ export class RegisterLoginComponent {
 
   showSignup() {
     this.isSignup = true;
+    this.RegisterForm.reset();
   }
 
   onRegister() {
@@ -85,6 +86,7 @@ export class RegisterLoginComponent {
 
   showLogin() {
     this.isSignup = false;
+    this.loginForm.reset();
   }
   onSubmit() {
     if (this.loginForm.invalid) {
@@ -107,7 +109,6 @@ export class RegisterLoginComponent {
         if (token.startsWith('Bearer ')) {
           token = token.replace('Bearer ', '');
         }
-
 
       // Store the token in localStorage
         localStorage.setItem('Token', token);

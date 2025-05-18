@@ -26,7 +26,10 @@
           {{ hidePassword ? 'visibility_off' : 'visibility' }}
         </mat-icon>
       </div>
-        <mat-error *ngIf="RegisterForm.get('password')?.invalid">Enter password</mat-error>
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+        Enter password
+      </div>
+        <!-- <mat-error *ngIf="RegisterForm.get('password')?.invalid">Enter password</mat-error> -->
 
       <a href="#" class="forgot">Forgot Password?</a>
 
