@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { BooksComponent } from './books/books.component';
+import { BooksComponent } from './components/books/books.component';
 
 
 

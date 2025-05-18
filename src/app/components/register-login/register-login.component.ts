@@ -103,12 +103,21 @@ export class RegisterLoginComponent {
 
     this.user.login(payload).subscribe({
       next: (result: any) => {
-        localStorage.setItem('Token', result.data); // store token
+        let token = result.data.accessToken;
+        if (token.startsWith('Bearer ')) {
+          token = token.replace('Bearer ', '');
+        }
+
+
+      // Store the token in localStorage
+        localStorage.setItem('Token', token);
+        localStorage.setItem('user', JSON.stringify(result.data.name));
 
         this.snackBar.open('Login Successful!', '', {
           duration: 3000,
           panelClass: ['success-snackbar']
         });
+
 
         this.router.navigate(['/dashboard']); // navigate to dashboard
       },
