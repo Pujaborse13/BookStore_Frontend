@@ -1,0 +1,93 @@
+/* Layout wrapper */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Content grows to fill space between navbar and footer */
+  .main-content {
+    flex: 1;
+  }
+  
+  /* Existing styles — keep your current styles here */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #a03037;
+    padding: 10px 30px;
+    color: white;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo img {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .logo span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .search-bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 4px;
+    padding: 4px 10px;
+    width: 50%;
+    max-width: 500px;
+  }
+  
+  .search-container mat-icon {
+    color: gray;
+    margin-right: 8px;
+  }
+  
+  .search-container input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .nav-actions {
+    display: flex;
+    gap: 25px;
+  }
+  
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  mat-icon {
+    font-size: 24px;
+  }
+  
+  /* Footer style */
+  .footer {
+    background-color: #2e1f1f;
+    color: white;
+    text-align: left;         
+    padding: 5px 150px;      
+    font-size: 13px;
+  }
+  
+  

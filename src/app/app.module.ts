@@ -16,7 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 import { HttpClientModule } from '@angular/common/http';
-// import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BooksComponent } from './books/books.component';
 
 
 
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     RegisterLoginComponent,
-    // DashboardComponent
+    DashboardComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,
