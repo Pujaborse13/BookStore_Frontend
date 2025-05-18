@@ -1,0 +1,245 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.left-panel {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 440px;
+  height: 390px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+
+  /* Center content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;    
+  text-align: center;
+  padding: 0 20px;
+}
+
+img {
+  border-radius: 50%;
+  width: 200px; // reduced from 280px
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.left-panel h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.right-panel {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 30px 25px;
+  width: 350px;
+  height: 460px; 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  overflow-y: auto; 
+
+  /* Overlap by 10% of left-panel width (440px * 10% = 44px) */
+  margin-left: -44px; 
+  z-index: 2;
+  position: relative;
+}
+
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tabs span {
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+  color: grey;
+}
+
+.tabs .active-tab {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: #a03037;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form label {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+form input {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #a03037;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-input {
+  width: 95%;
+  padding-right: 40px; /* leave space for the eye icon */
+  padding-left: 10px;
+  height: 20px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.password-input:focus {
+  outline: none;
+  border-color: #a03037;
+}
+
+.toggle-eye {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+}
+
+
+.error {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: -10px;
+}
+
+.forgot {
+  font-size: 13px;
+  color: #a03037;
+  text-align: right;
+  text-decoration: none;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+.login-btn,
+.signup-btn {
+  height: 45px;
+  font-size: 15px;
+  background-color: #a03037;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-btn:disabled,
+.signup-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.or-divider {
+  text-align: center;
+  margin: 10px 0;
+  position: relative;
+}
+
+.or-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #ccc;
+}
+
+.or-divider span {
+  background: white;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+  color: #888;
+  font-weight: bold;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.social-buttons button {
+  flex: 1;
+  height: 45px;
+  font-weight: bold;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.facebook {
+  background-color: #3b5998;
+  color: white;
+  border: none;
+}
+
+.google {
+  background-color: #f5f5f5;
+  color: black;
+  border: 1px solid #ddd;
+}
+
+
+.success-snackbar {
+  background-color: #4caf50; // green
+  color: white;
+}
+
+.error-snackbar {
+  background-color: #f44336; // red
+  color: white;
+}
+// mat-label {
+//   //font-weight: 600;
+//   font-size: 13px;
+//   margin-bottom: 1px; /* Add this to control spacing */
+//   display: inline-block; /* Make sure it respects spacing */
+// }
+
+// form input {
+//   margin-top: 0; /* Remove any extra top margin */
+//   margin-bottom: 5px; /* Reduce vertical spacing */
+//   padding: 10px;
+//   font-size: 14px;
+//   border-radius: 4px;
+//   border: 1px solid #ccc;
+// }

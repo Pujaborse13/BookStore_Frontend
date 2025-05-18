@@ -1,0 +1,81 @@
+ <div class="container">
+    <div class="left-panel">
+      <img src="assets/logincart.png" alt="Shopping illustration" />
+      <h2>ONLINE BOOK SHOPPING</h2>
+    </div>
+
+  <div class="right-panel">
+      
+      <div class="tabs">
+        <span [class.active-tab]="!isSignup" (click)="showLogin()">LOGIN</span>
+        <span [class.active-tab]="isSignup" (click)="showSignup()">SIGNUP</span>
+      </div>
+
+      <form *ngIf="!isSignup" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-label>Email Id</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="Enter email">
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+                  Valid email is required
+      </div>
+
+      <mat-label>Password</mat-label>
+      <div class="password-wrapper">
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Enter password"
+               class="password-input"/>
+        <mat-icon class="toggle-eye" (click)="togglePassword()">
+          {{ hidePassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+      </div>
+        <mat-error *ngIf="RegisterForm.get('password')?.invalid">Enter password</mat-error>
+
+      <a href="#" class="forgot">Forgot Password?</a>
+
+      <button class="login-btn" type="submit" [disabled]="loginForm.invalid">Login</button>
+
+      <div class="or-divider">OR</div>
+
+      <div class="social-buttons">
+        <button type="button" class="facebook">Facebook</button>
+        <button type="button" class="google">Google</button>
+      </div>
+    </form>
+
+    <form *ngIf="isSignup" [formGroup]="RegisterForm" (ngSubmit)="onRegister()">
+      <mat-label>Full Name</mat-label>
+      <input  matInput formControlName="fullname" placeholder="Enter full name">
+      <div *ngIf="RegisterForm.get('fullname')?.invalid && RegisterForm.get('fullname')?.touched" 
+      class="error">Enter full name
+      </div>
+
+      <mat-label>Email Id</mat-label>
+      <input matInput formControlName="email" placeholder="Enter email">
+      <div *ngIf="RegisterForm.get('email')?.invalid && RegisterForm.get('email')?.touched"
+           class="error">Valid email is required
+      </div>
+
+      
+      <mat-label>Password</mat-label>
+      <div class="password-wrapper">
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Enter password"
+               class="password-input"/>
+        <mat-icon class="toggle-eye" (click)="togglePassword()">
+          {{ hidePassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+      </div>
+      
+      <div *ngIf="RegisterForm.get('password')?.invalid && RegisterForm.get('password')?.touched" class="error">
+        Enter password
+      </div>
+      
+      <mat-label>Mobile Number</mat-label>
+      <input matInput formControlName="mobile" placeholder="Enter 10-digit mobile number">
+      <div *ngIf="RegisterForm.get('mobile')?.invalid && RegisterForm.get('mobile')?.touched" class="error">
+        Enter a valid 10-digit number
+      </div>
+
+      <button class="signup-btn" type="submit" [disabled]="RegisterForm.invalid">Signup</button>
+    </form>
+  </div>
+</div> 
+
+
