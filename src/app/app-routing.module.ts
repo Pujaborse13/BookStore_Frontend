@@ -5,12 +5,17 @@ import { BooksComponent } from './components/books/books.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterLoginComponent } from './components/register-login/register-login.component';
 
-const routes: Routes = [ { path:'register', component: RegisterLoginComponent},
-                         { path:'dashboard', component: DashboardComponent},
-                         { path:'books', component: BooksComponent},
-                         { path: 'book-details/:id', component: BookDetailsComponent },
+const routes: Routes = [  { path: '', redirectTo: 'register', pathMatch: 'full' },
+                         { path:'register', component: RegisterLoginComponent},
+                        //  { path:'dashboard', component: DashboardComponent},
+                        //  { path:'books', component: BooksComponent},
 
-                          { path: '', redirectTo: 'register', pathMatch: 'full' } ];
+                         {path: 'dashboard', component: DashboardComponent,
+                          children: [{ path: '', redirectTo: 'books', pathMatch: 'full' }, // default child
+                                     { path: 'books', component: BooksComponent },
+                                     { path: 'book-details/:id', component: BookDetailsComponent } ]},
+                         { path: 'book-details/:id', component: BookDetailsComponent },
+                        ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

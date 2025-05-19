@@ -1,5 +1,6 @@
 <div class="dashboard-container">
     <!-- Top Navbar -->
+    
     <div class="navbar">
       <!-- Logo Section -->
       <div class="logo">
@@ -30,7 +31,10 @@
   
     <!-- Main Content Placeholder -->
     <div class="main-content">
-      <app-books [searchTerm]= "searchTerm"></app-books>
+      <router-outlet></router-outlet>  <!-- This is the key change -->
+
+      <!-- <app-books [searchTerm]= "searchTerm"></app-books> -->
+      <!-- <app-book-details></app-book-details> -->
       
     </div>
   

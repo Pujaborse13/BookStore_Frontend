@@ -40,7 +40,9 @@ export class BooksComponent implements OnChanges{
   //book description
   onBookClick(bookId: number) {
     console.log("Navigating to book with ID:", bookId); 
-    this.router.navigate(['/book-details', bookId]);
+    // this.router.navigate(['/book-details', bookId]);
+    this.router.navigate(['dashboard/book-details',bookId]);
+
   }
 
 
