@@ -1,0 +1,70 @@
+<div *ngIf="book" class="book-details-container">
+      <!-- <div class="breadcrumb">Home/Book{{book.id}}</div> -->
+
+      <div class="breadcrumb">
+        <span class="breadcrumb-link" (click)="goToDashboard()">Home</span> /Book({{ book.id }})
+        <!-- <a routerLink="/dashboard" class="breadcrumb-link">Home</a> / Book {{ book.id }} -->
+
+      </div>
+      
+      <div class="book-content">
+
+        <!-- Left Section: Book Image and Thumbnail -->
+        <div class="image-section">
+          <img [src]="book.bookImage" alt="{{ book.bookName }}" class="main-image" />
+          
+          <div class="thumbnails">
+            <img [src]="book.bookImage" alt="thumb1" class="thumbnail" />
+          </div>
+          <div class="action-buttons">
+            <button class="btn add-to-bag">ADD TO BAG</button>
+            <button class="btn wishlist">❤ WISHLIST</button>
+          </div>
+        </div>
+    
+        <!-- Right Section: Book Details -->
+        <div class="details-section">
+          <h2>{{ book.bookName }}</h2>
+          <p class="author">by {{ book.author }}</p>
+
+          <div class="rating-price">
+            <span class="rating-value"> 4.5 <mat-icon class="star-icon">star</mat-icon></span>
+            <span class="rating-count">(20)</span>
+          </div>  
+
+          <div class="price">
+              <span class="discount-price">Rs. {{ book.discountPrice }}</span>
+              <span class="original-price">Rs. {{ book.price }}</span>
+          </div>
+          
+          <hr class="separator" />
+    
+          <!-- Book Detail Section -->
+          <h3 class="section-heading">Book Detail</h3>
+          <p class="description">{{ book.description }}</p>
+
+          <hr class="separator" />
+
+          <div class="feedback">
+            <h3 class="section-heading"> Customer Feedback</h3>
+            <p>Overall rating</p>
+            
+            <!-- Star Rating Loop -->
+            <div class="stars">
+              <ng-container *ngFor="let star of [1,2,3,4,5]">
+                <mat-icon class="star-outline">star_outline</mat-icon>
+              </ng-container>
+            </div>
+          
+            <textarea placeholder="Write your review"></textarea>
+            <!-- <button class="btn submit">Submit</button> -->
+            <div class="submit-container">
+              <button class="btn submit">Submit</button>
+            </div>
+            
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    

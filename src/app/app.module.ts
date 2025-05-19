@@ -18,15 +18,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BooksComponent } from './components/books/books.component';
-
-
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterLoginComponent,
     DashboardComponent,
-    BooksComponent
+    BooksComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,

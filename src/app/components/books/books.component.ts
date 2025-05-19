@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnChanges,Input, Output, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { BookService } from 'src/app/services/book/book.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class BooksComponent implements OnChanges{
   @Input() searchTerm: string = '';
 
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private router: Router) {}
+  
 
   ngOnInit(): void {
     this.fetchBooks();
@@ -35,13 +37,22 @@ export class BooksComponent implements OnChanges{
     }
   }
 
-  //get all books
+  //book description
+  onBookClick(bookId: number) {
+    console.log("Navigating to book with ID:", bookId); 
+    this.router.navigate(['/book-details', bookId]);
+  }
+
+
+    //get all books
   fetchBooks() {
     this.bookService.getAllBooks().subscribe({
       next: (response: any) => {
         if (response.success) {
           this.books = response.data;
           this.applyFilters();
+          console.log("Filtered books:", this.filteredBooks);
+
         }
       },
       error: (err) => {

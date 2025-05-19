@@ -22,9 +22,7 @@
 
     <!-- Book cards -->
   <div class="books-grid">
-    <div class="book-card" *ngFor="let book of filteredBooks | slice:(currentPage - 1) * pageSize:(currentPage) * pageSize">
-
-
+    <div class="book-card" *ngFor="let book of filteredBooks | slice:(currentPage - 1) * pageSize:(currentPage) * pageSize" (click)="onBookClick(book.id)">
       <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />
 
       <div class="book-info">
@@ -41,8 +39,9 @@
                 <span class="old">Rs. {{ book.price }}</span>
               </div>
             <div *ngIf="book.quantity === 0" class="stock-overlay">OUT OF STOCK</div>
-      </div>
-    </div>
+          </div>
+       </div>
+    
   </div>
 
       <!-- Pagination block -->
