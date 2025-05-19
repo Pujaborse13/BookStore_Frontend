@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,5 +10,10 @@ export class DashboardComponent {
   
   searchTerm: string = '';
 
-  
+  constructor(private router: Router) {}
+
+
+  goToCart() {
+    this.router.navigate(['/dashboard/cart']);
+  }
 }

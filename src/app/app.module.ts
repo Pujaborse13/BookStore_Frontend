@@ -19,6 +19,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BooksComponent } from './components/books/books.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { CartComponent } from './components/cart/cart.component';
+import { MatCardModule } from '@angular/material/card';
+
+import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     RegisterLoginComponent,
     DashboardComponent,
     BooksComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,11 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     MatSnackBarModule,
     HttpClientModule,
 
-    RouterModule
+    RouterModule,
+    MatCardModule,
+    MatSelectModule,
+    MatExpansionModule,
+
 
     
   ],

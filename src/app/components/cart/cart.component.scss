@@ -1,0 +1,137 @@
+ .cart-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  .breadcrumb {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 10px;
+    display: flex;
+    
+  }
+  
+  .breadcrumb-link {
+    cursor: pointer;
+    color: gray;
+    margin-right: 4px;
+  }
+  
+  .breadcrumb-link:hover {
+    text-decoration: underline;
+  }
+  
+  .current-page {
+    font-weight: 600;
+    color: #000;
+  }
+  
+  
+
+
+
+//card 
+  .cart-box {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  
+  .cart-section {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  
+    .panel-content {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #333;
+    }
+  }
+  
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  
+    .location-field {
+      width: 230px;
+      font-size: 13px;
+
+    }
+  }
+
+
+ 
+  .cart-item {
+    display: flex;
+    gap: 5px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  
+    img {
+      width: 80px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+  
+    .details {
+      flex: 1;
+  
+      h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+  
+      .author {
+        color: #757575;
+        font-size: 14px;
+        margin: 4px 0 10px;
+      }
+  
+      .price {
+        .current-price {
+          font-weight: bold;
+          font-size: 16px;
+        }
+  
+        .original-price {
+          text-decoration: line-through;
+          color: gray;
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
+  
+      .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+  
+        .remove-btn {
+          color: #d32f2f;
+        }
+      }
+    }
+  }
+  
+  .place-order {
+    display: flex;
+    justify-content: flex-end;
+    // margin-top: 10px;
+  }
+  

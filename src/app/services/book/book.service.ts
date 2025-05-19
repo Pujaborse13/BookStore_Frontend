@@ -92,6 +92,21 @@ export class BookService {
    }
 
 
+   //get cart books
+  getAllCartBooks()
+  {
+    let httpOption = 
+    {
+      headers: new HttpHeaders(
+      {
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    console.log('Headers:', httpOption);
+    return this.http.getApi('/api/cart', httpOption.headers);
+  }
 
 
+  
 }

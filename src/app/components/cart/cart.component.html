@@ -1,0 +1,72 @@
+
+<div class="cart-container" *ngIf="books.length > 0; else emptyCart">
+    <div class="cart-box">
+
+        <!-- home / cart -->
+        <div class="breadcrumb">
+            <span class="breadcrumb-link" (click)="goToDashboard()">Home</span> / <span class="current-page">My cart</span>
+        </div>
+  
+      <!-- My Cart Section -->
+      <div class="cart-section">
+        <div class="cart-header">
+          <h2>My cart ({{ books.length }})</h2>
+          
+          <!-- location -->
+          <mat-form-field appearance="outline" class="location-field">
+            <mat-label>Use current location</mat-label>
+            <mat-icon matPrefix>location_on</mat-icon>
+           
+            <mat-select>
+              <mat-option value="current">Use current location</mat-option>
+            </mat-select>
+          </mat-form-field>
+        
+        </div>
+  
+        <div class="cart-item" *ngFor="let item of books">
+          <img [src]="item.bookImage" alt="{{ item.bookName }}" />
+          <div class="details">
+            <h3>{{ item.bookName }}</h3>
+            <p class="author">by {{ item.author || 'Unknown Author' }}</p>
+                <div class="price">
+                    <span class="current-price">Rs. {{ item.price }}</span>
+                    <span class="original-price">Rs. {{ item.originalPrice || item.price + 500 }}</span>
+                </div>
+            <div class="quantity-controls">
+              <button mat-icon-button disabled>-</button>
+              <span>{{ item.quantity }}</span>
+              <button mat-icon-button>+</button>
+              <button mat-button class="remove-btn">Remove</button>
+            </div>
+          </div>
+        
+        </div>
+  
+        <div class="place-order">
+          <button mat-raised-button color="primary">PLACE ORDER</button>
+        </div>
+      </div>
+  
+      <!-- Address Details Section -->
+      <div class="cart-section">
+        <h2>Address Details</h2>
+        <!-- <div class="panel-content">Address form placeholder</div> -->
+      </div>
+  
+      <!-- Order Summary Section -->
+      <div class="cart-section">
+        <h2>Order Summary</h2>
+        <!-- <div class="panel-content">Order summary placeholder</div> -->
+      </div>
+  
+    </div>
+  </div>
+  
+  <ng-template #emptyCart>
+    <div class="empty-message">
+      <h2>Your cart is empty!</h2>
+      <button mat-raised-button color="accent" routerLink="/dashboard/books">Browse Books</button>
+    </div>
+  </ng-template>
+  
