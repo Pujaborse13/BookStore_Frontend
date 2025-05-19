@@ -13,22 +13,40 @@
   
   .book-content {
     display: flex;
-    gap: 40px;
+    gap: 10px;
   }
-  
+
   .image-section {
     width: 40%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    //align-items: center;
   }
   
-  .main-image {
-    width: 60%;
+  .image-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  
+  .thumbnail-outside {
+    width: 40px;
+    height: 60px;
     border: 1px solid #ccc;
-    padding: 10px;
+    background-color: white;
+  }
+
+  .main-image {
+    width: 280px;     /* or try 300px if you want it larger */
+    height: 370px;    /* or adjust as needed for proportion */
+    border: 1px solid #ccc;
+    padding: 5px;
+    object-fit: contain;
   }
   
+
   .thumbnails {
     display: flex;
     gap: 10px;
@@ -36,8 +54,8 @@
   }
   
   .thumbnail {
-    width: 40px;
-    height: 60px;
+    width: 50px;
+    height: 70px;
     border: 1px solid #ccc;
   }
   
@@ -65,7 +83,7 @@
   }
   
   .details-section {
-    width: 60%;
+    width: 75%;
   }
   
   .author {
@@ -189,4 +207,6 @@
     color: white;
     margin-top: 10px;
   }
+  
+
   
