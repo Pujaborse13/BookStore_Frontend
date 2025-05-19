@@ -17,8 +17,19 @@
           <img [src]="book.bookImage" alt="{{ book.bookName }}" class="main-image" />
 
           <div class="action-buttons">
-            <button class="btn add-to-bag">ADD TO BAG</button>
-            <button class="btn wishlist">❤ WISHLIST</button>
+            <ng-container *ngIf="!isInCart; else quantityBlock">
+              <button class="btn add-to-bag" (click)="addToCart(book.id)">ADD TO BAG</button>
+            </ng-container>
+
+            <ng-template #quantityBlock>
+              <div class="quantity-container">
+                <button class="qty-btn" (click)="decreaseQuantity()">−</button>
+                <span class="quantity-value">{{ quantity }}</span>
+                <button class="qty-btn" (click)="increaseQuantity()">+</button>
+              </div>
+            </ng-template>
+
+            <button class="btn wishlist"> ❤ WISHLIST</button>
           </div>
         </div>
     

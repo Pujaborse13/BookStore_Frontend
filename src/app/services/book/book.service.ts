@@ -77,6 +77,20 @@ export class BookService {
   }
 
 
+   //add book to cart
+   addToCart(bookId: number)
+   {
+     let httpOption = {
+       headers: new HttpHeaders(
+       {
+         'Authorization': `Bearer ${this.token}`,
+         'Content-Type': 'application/json'
+       })
+     };
+     console.log('Headers:', httpOption);
+     return this.http.postApi(`/api/cart?bookId=${bookId}`, {}, httpOption.headers);
+   }
+
 
 
 
