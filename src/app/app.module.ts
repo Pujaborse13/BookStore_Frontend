@@ -24,6 +24,8 @@ import { MatCardModule } from '@angular/material/card';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatCardModule,
     MatSelectModule,
     MatExpansionModule,
+    MatRadioModule
+
 
 
     

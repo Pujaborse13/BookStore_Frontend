@@ -1,7 +1,9 @@
 
-<div class="cart-container" *ngIf="books.length > 0; else emptyCart">
-    <div class="cart-box">
+<!-- <div class="cart-container" *ngIf="books.length > 0 && !orderSuccess; else emptyCart"> -->
+  <!-- FIXED -->
+<div class="cart-container" *ngIf="!orderSuccess && books.length > 0; else cartFallback">
 
+    <div class="cart-box">
         <!-- home / cart -->
         <div class="breadcrumb">
             <span class="breadcrumb-link" (click)="goToDashboard()">Home</span> / <span class="current-page">My cart</span>
@@ -44,29 +46,124 @@
         </div>
   
         <div class="place-order">
-          <button mat-raised-button color="primary">PLACE ORDER</button>
+          <button mat-raised-button color="primary" (click)="onPlaceOrder()">PLACE ORDER</button>
         </div>
-      </div>
-  
-      <!-- Address Details Section -->
+     </div>
+
+            
+            <!-- Address / Customer Details Section -->
       <div class="cart-section">
-        <h2>Address Details</h2>
-        <!-- <div class="panel-content">Address form placeholder</div> -->
+            <h2>{{ showAddressSection ? 'Customer Details' : 'Address Details' }}</h2>
+
+            <ng-container *ngIf="showAddressSection">
+              <form class="address-form">
+                <div class="form-row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <input matInput type="text" [(ngModel)]="customer.name" name="name" required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput type="text" [(ngModel)]="customer.phone" name="phone" required>
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>Address</mat-label>
+                  <textarea matInput rows="3" [(ngModel)]="customer.address" name="address" required></textarea>
+                </mat-form-field>
+
+                <div class="form-row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>City/Town</mat-label>
+                    <input matInput type="text" [(ngModel)]="customer.city" name="city" required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>State</mat-label>
+                    <input matInput type="text" [(ngModel)]="customer.state" name="state" required>
+                  </mat-form-field>
+                </div>
+
+                <div class="address-type">
+                  <label>Type:</label>
+                  <mat-radio-group [(ngModel)]="customer.type" name="type">
+                    <mat-radio-button value="home">Home</mat-radio-button>
+                    <mat-radio-button value="work">Work</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+
+                <button mat-raised-button color="primary" class="continue-btn" (click)="customerDetails()">CONTINUE</button>
+            </form>
+            </ng-container>
+
       </div>
-  
+
+
       <!-- Order Summary Section -->
-      <div class="cart-section">
-        <h2>Order Summary</h2>
-        <!-- <div class="panel-content">Order summary placeholder</div> -->
-      </div>
-  
+      <div class="cart-section" > 
+            <h2>Order Summary</h2>
+
+            <ng-container *ngIf="showOrderSummarySection">
+
+            <div class="order-item" *ngFor="let item of books">
+              <img [src]="item.bookImage" alt="{{ item.bookName }}" />
+              
+              <div class="order-details">
+                <h3>{{ item.bookName }}</h3>
+                <p>Quantity: {{ item.quantity }}</p>
+                <div class="price">
+                  <span class="current-price">Rs. {{ item.price }}</span>
+                  <span class="original-price">Rs. {{ item.originalPrice || item.price + 500 }}</span>
+                </div>
+              </div>
+            
+            </div>
+
+            <div class="total-section">
+              <p>Total Quantity: <strong>{{ getTotalQuantity() }}</strong></p>
+              <p>Total Amount: <strong>Rs. {{ getTotalPrice() }}</strong></p>
+            </div>
+
+            <div class="checkout">
+              <button  mat-raised-button color="primary" (click)="checkout()">CHECKOUT</button>
+            </div>
+
+
+          </ng-container>
+ 
+     </div> 
+   
     </div>
   </div>
-  
-  <ng-template #emptyCart>
-    <div class="empty-message">
-      <h2>Your cart is empty!</h2>
-      <button mat-raised-button color="accent" routerLink="/dashboard/books">Browse Books</button>
-    </div>
+
+   <!-- Order Success Message
+   <div *ngIf="orderSuccess" class="order-success-section">
+    <img src="assets/images/order.png" alt="Order Success" class="success-image" />
+    <h2>Hurray!!! Your order is confirmed</h2>
+    <p>The order id is #{{ orderId }}. Save the order id for further communication...</p>
+    <button mat-raised-button color="accent" routerLink="/dashboard/books">Continue Shopping</button>
+  </div> -->
+
+  <ng-template #cartFallback>
+    <ng-container *ngIf="orderSuccess; else emptyCart">
+      <!-- Order Success Message -->
+      <div class="order-success-section">
+        <img src="assets/images/order.png" alt="Order Success" class="success-image" />
+        <h2>Hurray!!! Your order is confirmed</h2>
+        <p>The order id is #{{ orderId }}. Save the order id for further communication...</p>
+        <button mat-raised-button color="primary" routerLink="/dashboard/books">Continue Shopping</button>
+      </div>
+    </ng-container>
   </ng-template>
   
+  
+ <!-- Empty Cart UI -->
+<ng-template #emptyCart>
+  <div class="empty-message">
+    <h2>Your cart is empty!</h2>
+    <button mat-raised-button color="primary" routerLink="/dashboard/books">Browse Books</button>
+  </div>
+  
+</ng-template>

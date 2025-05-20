@@ -108,5 +108,30 @@ export class BookService {
   }
 
 
+  //customer details
+  addCustomerDetails(customerDetails: any) {
+    let httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.postApi(`/api/customer`, customerDetails, httpOption.headers);
+  }
   
+
+  placeOrder() {
+    let httpOption = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.postApi(`/api/orders/placeorder`, {}, httpOption.headers);  
+  }
+  
+  
+
+
+
 }
