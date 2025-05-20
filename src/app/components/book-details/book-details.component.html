@@ -23,9 +23,9 @@
 
             <ng-template #quantityBlock>
               <div class="quantity-container">
-                <button class="qty-btn" (click)="decreaseQuantity()">−</button>
+                <button class="qty-btn" (click)="updateQuantity('dec')">−</button>
                 <span class="quantity-value">{{ quantity }}</span>
-                <button class="qty-btn" (click)="increaseQuantity()">+</button>
+                <button class="qty-btn" (click)="updateQuantity('inc')">+</button>
               </div>
             </ng-template>
 

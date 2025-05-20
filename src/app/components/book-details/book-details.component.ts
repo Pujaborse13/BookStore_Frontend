@@ -73,17 +73,40 @@ getBookByBookId(id: number) {
       });
     }
     
-    increaseQuantity() {
-      this.quantity++;
-      // Optional: update cart API here
+    updateQuantity(action: 'inc' | 'dec') {
+      if (action === 'dec' && this.quantity === 1) {
+        this.snackBar.open('Quantity cannot be less than 1.', 'Close', {
+          duration: 2000,
+          verticalPosition: 'bottom',
+          panelClass: ['snackbar-warning']
+        });
+        return;
+      }
+    
+      this.bookService.updateQuantityCart(this.book.id, action).subscribe({
+        next: (response: any) => {
+          if (response?.data) {
+            this.quantity = response.data.quantity;
+    
+            const actionText = action === 'inc' ? 'increased' : 'decreased';
+            this.snackBar.open(`Quantity ${actionText}.`, 'Close', {
+              duration: 2000,
+              verticalPosition: 'bottom',
+              panelClass: ['snackbar-success']
+            });
+          }
+        },
+        error: (err) => {
+          console.error('Error updating quantity:', err);
+          this.snackBar.open('Failed to update quantity. Please try again.', 'Close', {
+            duration: 3000,
+            verticalPosition: 'bottom',
+            panelClass: ['snackbar-error']
+          });
+        }
+      });
     }
     
-    decreaseQuantity() {
-      if (this.quantity > 1) {
-        this.quantity--;
-        // Optional: update cart API here
-      }
-    }
     
 
 }
