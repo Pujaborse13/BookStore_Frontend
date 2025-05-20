@@ -4,17 +4,13 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { BooksComponent } from './components/books/books.component';
 import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { OrdersComponent } from './components/orders/orders.component';
 import { RegisterLoginComponent } from './components/register-login/register-login.component';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatExpansionModule } from '@angular/material/expansion';
 
 
 const routes: Routes = [  { path: '', redirectTo: 'register', pathMatch: 'full' },
                          { path:'register', component: RegisterLoginComponent},
+                         { path:'orders', component: OrdersComponent},
                         //  { path:'cart', component: CartComponent},
                         //  { path:'dashboard', component: DashboardComponent},
                         //  { path:'books', component: BooksComponent},

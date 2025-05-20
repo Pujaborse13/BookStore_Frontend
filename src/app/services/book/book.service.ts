@@ -153,6 +153,23 @@ export class BookService {
     };
     return this.http.putApi(`/api/cart/updatequantity?bookId=${bookId}&action=${action}`, {}, httpOptions.headers);
   }
+
   
+
+
+
+  getAllOrders()
+  {
+    let httpOption = 
+    {
+      headers: new HttpHeaders(
+      {
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    console.log('Headers:', httpOption);
+    return this.http.getApi('/api/orders/userorders', httpOption.headers);
+  }
 
 }

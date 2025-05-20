@@ -25,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatRadioModule } from '@angular/material/radio';
     DashboardComponent,
     BooksComponent,
     BookDetailsComponent,
-    CartComponent
+    CartComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
