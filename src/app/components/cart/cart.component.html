@@ -159,11 +159,12 @@
   </ng-template>
   
   
- <!-- Empty Cart UI -->
-<ng-template #emptyCart>
-  <div class="empty-message">
-    <h2>Your cart is empty!</h2>
-    <button mat-raised-button color="primary" routerLink="/dashboard/books">Browse Books</button>
-  </div>
+    <!-- Empty Cart UI -->
+    <ng-template #emptyCart>
+      <div class="empty-message">
+        <img src="assets/images/emptycart3.png" alt="cart empty" class="emptyCart-image" />
+        <h2>Your cart is Empty!</h2>
+        <button mat-raised-button color="accent" routerLink="/dashboard/books">Browse Books</button>
+      </div>
   
-</ng-template>
+    </ng-template>

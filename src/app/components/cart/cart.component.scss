@@ -220,20 +220,6 @@
     margin-top: 20px;
   }
   
-  // .order-success-section {
-  //   text-align: center;
-  //   padding: 20px;
-  // }
-  
-  // .success-image {
-  //   width: 120px;
-  //   margin-bottom: 20px;
-  // }
-  
-
-
-
-
   .order-success-section {
     display: flex;
     flex-direction: column;
@@ -261,5 +247,32 @@
       height: auto;      
       margin-bottom: 20px;
     }
+  }
+  
+
+  .empty-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    height: 350px; 
+    font-family:'Times New Roman', Times, serif
+  }
+  
+  .emptyCart-image {
+    width: 300px; 
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .empty-message h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .empty-message button {
+    margin-top: 10px;
   }
   
