@@ -30,17 +30,24 @@
           <img [src]="item.bookImage" alt="{{ item.bookName }}" />
           <div class="details">
             <h3>{{ item.bookName }}</h3>
-            <p class="author">by {{ item.author || 'Unknown Author' }}</p>
+            <p class="author"> by {{ item.author || 'Unknown Author' }}</p>
                 <div class="price">
                     <span class="current-price">Rs. {{ item.price }}</span>
                     <span class="original-price">Rs. {{ item.originalPrice || item.price + 500 }}</span>
                 </div>
+
             <div class="quantity-controls">
-              <button mat-icon-button disabled>-</button>
+              <button mat-icon-button (click)="updateQuantity(item.bookId, 'dec')">
+                <mat-icon>remove</mat-icon>
+              </button>              
               <span>{{ item.quantity }}</span>
-              <button mat-icon-button>+</button>
-              <button mat-button class="remove-btn">Remove</button>
+            <button mat-icon-button (click)="updateQuantity(item.bookId, 'inc')">
+                 <mat-icon>add</mat-icon>
+            </button>
+
+              <button mat-button class="remove-btn" (click)="removeFromCart(item.bookId)">Remove </button>
             </div>
+          
           </div>
         
         </div>
@@ -138,13 +145,6 @@
     </div>
   </div>
 
-   <!-- Order Success Message
-   <div *ngIf="orderSuccess" class="order-success-section">
-    <img src="assets/images/order.png" alt="Order Success" class="success-image" />
-    <h2>Hurray!!! Your order is confirmed</h2>
-    <p>The order id is #{{ orderId }}. Save the order id for further communication...</p>
-    <button mat-raised-button color="accent" routerLink="/dashboard/books">Continue Shopping</button>
-  </div> -->
 
   <ng-template #cartFallback>
     <ng-container *ngIf="orderSuccess; else emptyCart">

@@ -11,6 +11,7 @@ interface CustomerDetailsModel {
   city: string;
   state: string;
   type: string;
+  
 }
 
 @Component({
@@ -39,8 +40,6 @@ export class CartComponent {
     type: 'home'
   };
   
-
-
 
   ngOnInit() {
     this.getAllCart();
@@ -121,20 +120,19 @@ export class CartComponent {
     });
   }
   
-
+//place order , order summry
   checkout() {
     this.bookService.placeOrder().subscribe({
       next: (response: any) => {
         if (response.success) {
-          this.orderId = response.data.orderId; // Replace with actual field
+          this.orderId = response.data.orderId;
           this.orderSuccess = true;
           this.snackBar.open('Order placed successfully!', 'Close', {
             duration: 3000,
             panelClass: ['snackbar-success']
           });
   
-          // Optionally clear the cart view
-          this.books = [];
+          this.books = []; //cart empty
         } else {
           this.snackBar.open(`Order failed: ${response.message}`, 'Close', {
             duration: 3000,
@@ -151,9 +149,59 @@ export class CartComponent {
       }
     });
   }
+
+  // remove book from cart
+ removeFromCart(bookId: number) {
+    this.bookService.removeFromCart(bookId).subscribe({
+      next: (response: any) => {
+        if (response.success || response.includes('removed')) {
+          this.snackBar.open('Book removed from cart successfully!', 'Close', {
+            duration: 3000,
+            panelClass: ['snackbar-success']
+          });
+          this.books = this.books.filter(item => item.bookId !== bookId);
+         // this.getAllCart();  // Refresh the cart
+        } 
+        else {
+          this.snackBar.open(`Failed to remove: ${response.message || response}`, 'Close', {
+            duration: 3000,
+            panelClass: ['snackbar-warning']
+          });
+        }
+      },
+      error: (err) => {
+        console.error('Error removing book from cart:', err);
+        this.snackBar.open('Error removing book. Try again.', 'Close', {
+          duration: 3000,
+          panelClass: ['snackbar-error']
+        });
+      }
+    });
+  }
+ 
+//update book quanity 
+  updateQuantity(bookId: number, action: string) {
+    this.bookService.updateQuantityCart(bookId, action).subscribe({
+      next: (response: any) => {
+        if (response?.message?.includes("removed")) {
+          this.books = this.books.filter(item => item.bookId !== bookId);
+        } 
+        else if (response?.data) {
+          const updatedItem = response.data;
+          const index = this.books.findIndex(item => item.bookId === bookId);
+          
+          if (index !== -1) {
+            this.books[index].quantity = updatedItem.quantity;
+            this.books[index].price = updatedItem.price;
+          }
+        }
+      },
+      error: (error) => {
+        console.error("Error updating quantity:", error);
+      }
+    });
+  }
   
-
-
 }
    
       

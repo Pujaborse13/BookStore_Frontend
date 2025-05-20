@@ -131,7 +131,28 @@ export class BookService {
   }
   
   
+//remove book from cart
+  removeFromCart(bookId: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.deleteApi(`/api/cart/${bookId}`, httpOptions.headers);
+  }
+  
 
 
+  updateQuantityCart(bookId: number, action: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.putApi(`/api/cart/updatequantity?bookId=${bookId}&action=${action}`, {}, httpOptions.headers);
+  }
+  
 
 }
