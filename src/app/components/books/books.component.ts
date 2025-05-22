@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnChanges,Input, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookService } from 'src/app/services/book/book.service';
-import { SearchServiceService } from 'src/app/services/search/search-service.service';
+import { SearchServiceService } from 'src/app/services/search/search.service';
 
 @Component({
   selector: 'app-books',
