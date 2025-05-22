@@ -32,6 +32,7 @@ export class RegisterLoginComponent {
     });
   }
 
+  
   togglePassword() 
   {
     this.hidePassword = !this.hidePassword;
@@ -112,7 +113,9 @@ export class RegisterLoginComponent {
 
       // Store the token in localStorage
         localStorage.setItem('Token', token);
-        localStorage.setItem('user', JSON.stringify(result.data.name));
+        localStorage.setItem('fullName', result.data.fullName); 
+
+
 
         this.snackBar.open('Login Successful!', '', {
           duration: 3000,
@@ -130,5 +133,9 @@ export class RegisterLoginComponent {
       }
     });
   }
+
+
+
+  
  
 }
