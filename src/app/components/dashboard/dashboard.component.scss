@@ -64,22 +64,7 @@
     font-size: 16px;
   }
   
-  .nav-actions {
-    display: flex;
-    gap: 25px;
-  }
   
-  .nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  mat-icon {
-    font-size: 24px;
-  }
   
   /* Footer style */
   .footer {
@@ -89,5 +74,73 @@
     padding: 5px 150px;      
     font-size: 13px;
   }
+
+
+  .profile-menu {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
   
+  .menu-header {
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  .logout-button {
+    color: red;
+  }
+  
+
+  .cart-icon {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  ::ng-deep .mat-badge-content {
+    background: white !important;
+    color: #a03037 !important; /* Matches your navbar background */
+    font-weight: bold;
+    border: 1px solid #a03037;
+    
+  }
+  
+  
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+  }
+  
+  .nav-item, .icon-with-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    display: flex;
+   cursor: pointer;
+  }
+  
+  .icon-with-label {
+    cursor: pointer;
+  }
+  
+  .icon-with-label {
+    font-size: 0.75rem;
+  }
+
+
+  mat-icon {
+    font-size: 24px;
+  }
+
+ 
+
+
+
+
+ 
   

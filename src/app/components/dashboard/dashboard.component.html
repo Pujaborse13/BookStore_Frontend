@@ -12,29 +12,67 @@
       <div class="search-bar">
         <div class="search-container">
           <mat-icon>search</mat-icon>
-          <input type="text" placeholder="Search ..." [(ngModel)]="searchTerm" />
+          <input type="text" placeholder="Search ..." [(ngModel)]="searchTerm"(ngModelChange)="onSearchChange($event)"/>
+          <!-- <input type="text" placeholder="Search ..." [(ngModel)]="searchTerm" /> -->
         </div>
       </div>
   
-      <!-- Right-side Icons -->
-      <div class="nav-actions">
-        <div class="nav-item">
+       <!-- Right-side Icons -->
+    <div class="nav-actions">
+      <!-- Profile Menu -->
+      <div class="nav-item profile-menu" [matMenuTriggerFor]="profileMenu">
+        <mat-icon>person</mat-icon>
+        <span>{{ userName }}</span>
+      </div>
+
+
+      <!-- profile click options  -->
+
+      <mat-menu #profileMenu="matMenu">
+        <div class="menu-header">Hello {{ userName }},</div>
+        
+        <!-- <button mat-menu-item (click)="goToProfile()">
           <mat-icon>person</mat-icon>
           <span>Profile</span>
-        </div>
+        </button> -->
 
-        <!-- Cart nav-item -->
-        <div class="nav-item" (click)="goToCart()">
-          <mat-icon>shopping_cart</mat-icon>
-          <span>Cart</span>
-        </div>
+        <button mat-menu-item (click)="goToOrders()">
+          <mat-icon>shopping_bag</mat-icon>
+          <span>My Orders</span>
+        </button>
+
+        <button mat-menu-item (click)="goToWishlist()">
+          <mat-icon>favorite</mat-icon>
+          <span>Wishlist</span>
+        </button>
         
+        <button mat-menu-item (click)="logout()" class="logout-button">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+
+
+       <!-- cart icon -->
+       <div class="icon-with-label">
+        <button mat-icon-button
+              [matBadge]="cartItemCount"
+              matBadgeColor="accent"
+              matBadgeOverlap="false"
+              [matBadgeHidden]="cartItemCount === 0"
+              (click)="goToCart()">
+        <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <span class="label">Cart</span>
       </div>
+      
+
     </div>
-  
+  </div>
+
     <!-- Main Content Placeholder -->
     <div class="main-content">
-      <router-outlet></router-outlet>  <!-- This is the key change -->
+      <router-outlet></router-outlet>  
 
       <!-- <app-books [searchTerm]= "searchTerm"></app-books> -->
       <!-- <app-book-details></app-book-details> -->
