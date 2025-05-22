@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { BookService } from 'src/app/services/book/book.service';
 
 @Component({
@@ -12,10 +13,16 @@ export class OrdersComponent {
   orders: any[] = [];
   isLoading: boolean = true;
 
-  constructor(private bookService: BookService, private snackBar: MatSnackBar) {}
+  constructor(private bookService: BookService, private snackBar: MatSnackBar, private router: Router) {}
 
   ngOnInit() {
     this.fetchOrders();
+  }
+
+
+   // go to home page
+   goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 
   fetchOrders() {
@@ -42,5 +49,6 @@ export class OrdersComponent {
     });
   }
 
+  
 
 }

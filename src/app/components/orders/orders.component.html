@@ -1,52 +1,9 @@
-      <!-- <div class="orders-container" *ngIf="!isLoading; else loading">
-    <h2>Order History</h2>
-  
-    <div *ngIf="orders.length === 0">
-<p>No orders found.</p>
-    </div>
-  
-    <div *ngFor="let order of orders" class="order-card">
-      <h4>Order ID: {{ order.orderId }}</h4>
-      <p><strong>Book:</strong> {{ order.bookName }}</p>
-      <p><strong>Author:</strong> {{ order.author }}</p>
-      <p><strong>Price:</strong> ₹{{ order.PricePerItem }}</p>
-      <p><strong>Quantity:</strong> {{ order.quantity }}</p>
-      <p><strong>Order Date:</strong> {{ order.orderDate | date:'medium' }}</p>
-    </div>
-  </div>
-  
-  <ng-template #loading>
-    <p>Loading order history...</p>
-  </ng-template>
-
-
-
-
-
-  author
-: 
-"Cal Newport"
-bookImage
-: 
-"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAA
-bookName
-: 
-"Deep Work"
-orderDate
-: 
-"2025-05-20T09:11:33.677"
-pricePerItem
-: 
-900
-quantity
-: 
-1
-totalPrice
-: 
-900
-   -->
-
   <div class="orders-wrapper" *ngIf="!isLoading; else loading">
+     <!-- home / cart -->
+     <div class="breadcrumb">
+      <span class="breadcrumb-link" (click)="goToDashboard()">Home</span> / <span class="current-page">My orders</span>
+     </div>
+
     <div *ngIf="orders.length === 0" class="no-orders">
       <p>No orders found.</p>
     </div>

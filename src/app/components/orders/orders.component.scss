@@ -84,3 +84,20 @@
     color: #888;
   }
   
+  .breadcrumb {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 10px;
+    display: flex;
+    
+  }
+  
+  .breadcrumb-link {
+    cursor: pointer;
+    color: gray;
+    margin-right: 4px;
+  }
+  
+  .breadcrumb-link:hover {
+    text-decoration: underline;
+  }
