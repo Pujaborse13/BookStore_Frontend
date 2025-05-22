@@ -1,6 +1,5 @@
 
 <!-- <div class="cart-container" *ngIf="books.length > 0 && !orderSuccess; else emptyCart"> -->
-  <!-- FIXED -->
 <div class="cart-container" *ngIf="!orderSuccess && books.length > 0; else cartFallback">
 
     <div class="cart-box">
@@ -31,19 +30,21 @@
           <div class="details">
             <h3>{{ item.bookName }}</h3>
             <p class="author"> by {{ item.author || 'Unknown Author' }}</p>
-                <div class="price">
+                
+            <div class="price">
                     <span class="current-price">Rs. {{ item.price }}</span>
                     <span class="original-price">Rs. {{ item.originalPrice || item.price + 500 }}</span>
-                </div>
+            </div>
 
             <div class="quantity-controls">
-              <button mat-icon-button (click)="updateQuantity(item.bookId, 'dec')">
+              <button mat-icon-button (click)="updateQuantity(item.bookId, 'dec')" [disabled]="item.quantity <= 1">
                 <mat-icon>remove</mat-icon>
-              </button>              
+              </button>    
+
               <span>{{ item.quantity }}</span>
-            <button mat-icon-button (click)="updateQuantity(item.bookId, 'inc')">
-                 <mat-icon>add</mat-icon>
-            </button>
+              <button mat-icon-button (click)="updateQuantity(item.bookId, 'inc')">
+                  <mat-icon>add</mat-icon>
+              </button>
 
               <button mat-button class="remove-btn" (click)="removeFromCart(item.bookId)">Remove </button>
             </div>
@@ -60,7 +61,7 @@
             
             <!-- Address / Customer Details Section -->
       <div class="cart-section">
-            <h2>{{ showAddressSection ? 'Customer Details' : 'Address Details' }}</h2>
+            <h2 (click)="expandAddressSection()"> {{ showAddressSection ? 'Customer Details' : 'Address Details' }}</h2>
 
             <ng-container *ngIf="showAddressSection">
               <form class="address-form">
@@ -110,7 +111,7 @@
 
       <!-- Order Summary Section -->
       <div class="cart-section" > 
-            <h2>Order Summary</h2>
+            <h2 (click)="expandSummarySection()"> Order Summary</h2>
 
             <ng-container *ngIf="showOrderSummarySection">
 
@@ -128,6 +129,26 @@
             
             </div>
 
+            <!-- <div class="order-item" *ngFor="let item of books">
+              <img [src]="item.bookImage" alt="{{ item.bookName }}" />
+            
+              <div class="order-details">
+                <h3>{{ item.bookName }}</h3>
+                <p>by {{ item.author || 'Unknown Author' }}</p>
+                <p>Quantity: {{ item.quantity }}</p>
+            
+                <div class="price">
+                  <p>
+                    <strong>Price per unit:</strong> 
+                    <span class="current-price">Rs. {{ item.price }}</span> 
+                    <span class="original-price">Rs. {{ item.originalPrice || item.price + 500 }}</span>
+                  </p>
+                </div>
+              </div>
+            </div> -->
+            
+
+            <!--  -->
             <div class="total-section">
               <p>Total Quantity: <strong>{{ getTotalQuantity() }}</strong></p>
               <p>Total Amount: <strong>Rs. {{ getTotalPrice() }}</strong></p>

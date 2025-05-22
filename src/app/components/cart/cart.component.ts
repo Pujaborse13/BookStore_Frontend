@@ -22,6 +22,7 @@ interface CustomerDetailsModel {
 export class CartComponent {
 
   constructor(private bookService: BookService, private router: Router, private snackBar: MatSnackBar) {}
+  
   books: any[] = [];
   book: any;
   showAddressSection: boolean = false;
@@ -45,6 +46,15 @@ export class CartComponent {
     this.getAllCart();
   }
 
+  expandAddressSection() {
+    this.showAddressSection = true;
+  }
+  
+  expandSummarySection() {
+    this.showOrderSummarySection = true;
+  }
+  
+  
   getAllCart() {
     this.bookService.getAllCartBooks().subscribe({
       next: (response: any) => {
@@ -52,7 +62,7 @@ export class CartComponent {
           this.books = response.data.items || [];  
           console.log("Cart books:", this.books);
         } else {
-          console.warn('Cart fetch returned no success:', response.message);
+          console.log('Cart fetch returned no success:', response.message);
         }
       },
       error: (err) => {
@@ -70,6 +80,9 @@ export class CartComponent {
   }
 
   
+
+
+
   // go to home page
   goToDashboard() {
     this.router.navigate(['/dashboard']);
