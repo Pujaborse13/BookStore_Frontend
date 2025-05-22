@@ -1,0 +1,37 @@
+
+ 
+  <div class="breadcrumb">
+    <span class="breadcrumb-link" (click)="goToDashboard()">Home</span> /
+    <span class="current-page">My Wishlist</span>
+  </div>
+  
+  <div class="wishlist-wrapper">
+
+    <div class="wishlist-container">
+      <mat-card class="wishlist-header">
+        <h2>My Wishlist ({{ books.length }})</h2>
+      </mat-card>
+  
+      <div *ngFor="let book of books" class="wishlist-item">
+       
+        <mat-card class="book-card">
+          <div class="book-info">
+            <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />
+            <div class="book-details">
+              <h3>{{ book.bookName }}</h3>
+              <p class="author">by {{ book.author }}</p>
+              <div class="price">
+                <span class="discount-price">Rs. {{ book.discountPrice }}</span>
+                <span class="original-price">Rs. {{ book.price }}</span>
+              </div>
+            </div>
+          </div>
+  
+          <button mat-icon-button class="delete-button" (click)="removeFromWishlist(book.bookId)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
