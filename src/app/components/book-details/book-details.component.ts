@@ -18,7 +18,7 @@ constructor(
   private bookService: BookService,
   private route: ActivatedRoute,
   private router: Router,
-  private snackBar: MatSnackBar
+  private snackBar: MatSnackBar,
 
 ) {}
 
@@ -61,6 +61,7 @@ getBookByBookId(id: number) {
 
           this.isInCart = true;   //  Change to quantity view
           this.quantity = 1;      // Start from 1
+          
         },
         error: (err) => {
           console.error('Error adding to cart:', err);
@@ -73,6 +74,7 @@ getBookByBookId(id: number) {
       });
     }
     
+    //update cart book quantity 
     updateQuantity(action: 'inc' | 'dec') {
       if (action === 'dec' && this.quantity === 1) {
         this.snackBar.open('Quantity cannot be less than 1.', 'Close', {
@@ -103,6 +105,36 @@ getBookByBookId(id: number) {
             verticalPosition: 'bottom',
             panelClass: ['snackbar-error']
           });
+        }
+      });
+    }
+  
+     //add book to wishlist
+     addToWishlist(bookId: number) {
+      this.bookService.addToWishlist(bookId).subscribe({
+        next: (response: any) => {
+          console.log("Add to wishlist Response:", response);
+          this.snackBar.open('Book added to Wishlist successfully!', 'Close', {
+            duration: 3000,
+            verticalPosition: 'bottom',
+            panelClass: ['snackbar-success']
+          });
+        },
+        error: (err) => {
+          console.error('Error adding to wishlist:', err);
+          if (err.status === 409 && err.error?.message?.includes('already exists')) {
+            this.snackBar.open('Book already exists in wishlist.', 'Close', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              panelClass: ['snackbar-warning']
+            });
+          } else {
+            this.snackBar.open('Failed to add book to wishlist.', 'Close', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              panelClass: ['snackbar-error']
+            });
+          }
         }
       });
     }
