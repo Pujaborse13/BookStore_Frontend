@@ -26,6 +26,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import { OrdersComponent } from './components/orders/orders.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { MatBadgeModule } from '@angular/material/badge';
+
 
 
 @NgModule({
@@ -36,7 +40,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     BooksComponent,
     BookDetailsComponent,
     CartComponent,
-    OrdersComponent
+    OrdersComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,11 @@ import { OrdersComponent } from './components/orders/orders.component';
     MatCardModule,
     MatSelectModule,
     MatExpansionModule,
-    MatRadioModule
+    MatRadioModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatBadgeModule 
 
 
 

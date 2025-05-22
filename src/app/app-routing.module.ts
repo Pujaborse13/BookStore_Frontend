@@ -6,22 +6,20 @@ import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { RegisterLoginComponent } from './components/register-login/register-login.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 
 const routes: Routes = [  { path: '', redirectTo: 'register', pathMatch: 'full' },
                          { path:'register', component: RegisterLoginComponent},
-                         { path:'orders', component: OrdersComponent},
-                        //  { path:'cart', component: CartComponent},
-                        //  { path:'dashboard', component: DashboardComponent},
-                        //  { path:'books', component: BooksComponent},
-                        // { path: 'book-details/:id', component: BookDetailsComponent },
-
+                        
                          {path: 'dashboard', component: DashboardComponent,
                           children: [{ path: '', redirectTo: 'books', pathMatch: 'full' }, // default child
                                      { path: 'books', component: BooksComponent },
                                      { path: 'book-details/:id', component: BookDetailsComponent },
                                      { path:'cart', component: CartComponent},
-                                    
+                                     { path: 'orders', component: OrdersComponent },
+                                     { path:'wishlist', component: WishlistComponent},
+                                     
                                     ]},
                         ];
 
