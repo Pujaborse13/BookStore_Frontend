@@ -3,21 +3,16 @@
   <div class="books-header">
     <h2 class="books-title">Books <span class="book-length">({{ books.length }} Items)</span></h2>
 
-          <div class="sort-dropdown">
-            <div class="dropdown-wrapper">
-              <select id="sortSelect"[(ngModel)]="selectedSort"(change)="sortBooks()"(focus)="isDropdownOpen = true"
-                      (blur)="isDropdownOpen = false">
-                <option value="relevance">Sort by Relevance</option>
-                <option value="lowToHigh">Price : Low to High</option>
-                <option value="highToLow">Price : High to Low</option>
-                <option value="newest">Newest Arrivals</option>
-              </select>
-
-              <mat-icon class="dropdown-icon">
-                {{ isDropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
-              </mat-icon>
-            </div>
-          </div>
+    <div class="sort-dropdown" >
+      <mat-form-field appearance="outline">
+        <mat-select [(ngModel)]="selectedSort" (selectionChange)="sortBooks()" >
+          <mat-option value="relevance">Sort by Relevance</mat-option>
+          <mat-option value="lowToHigh">Price: Low to High</mat-option>
+          <mat-option value="highToLow">Price: High to Low</mat-option>
+          <mat-option value="newest">Newest Arrivals</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
 
     <!-- Book cards -->

@@ -228,18 +228,98 @@ form input:focus {
   background-color: #f44336; // red
   color: white;
 }
-// mat-label {
-//   //font-weight: 600;
-//   font-size: 13px;
-//   margin-bottom: 1px; /* Add this to control spacing */
-//   display: inline-block; /* Make sure it respects spacing */
-// }
 
-// form input {
-//   margin-top: 0; /* Remove any extra top margin */
-//   margin-bottom: 5px; /* Reduce vertical spacing */
-//   padding: 10px;
-//   font-size: 14px;
-//   border-radius: 4px;
-//   border: 1px solid #ccc;
-// }
+
+
+// resposive
+@media (max-width: 960px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .auth-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .left-panel {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .left-panel img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .right-panel {
+    width: 90%;
+    height: auto;
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .tabs span {
+    font-size: 20px;
+  }
+
+  .password-input {
+    width: 100%;
+  }
+}
+
+/* ========== Mobile View ========== */
+@media (max-width: 700px) {
+  .container {
+    padding: 10px;
+  }
+  .right-panel {
+    width: 100%;
+    margin-left: 0;
+    box-shadow: none;
+    padding: 20px;
+  }
+
+  .left-panel {
+    display: none; /* Hide image/illustration on small screens */
+  }
+
+  .right-panel {
+    width: 100%;
+    box-shadow: none;
+    padding: 15px;
+  }
+
+  .tabs {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .tabs span {
+    font-size: 18px;
+  }
+
+  form input,
+  .password-input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .login-btn,
+  .signup-btn,
+  .social-buttons button {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .forgot {
+    font-size: 12px;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+  }
+}

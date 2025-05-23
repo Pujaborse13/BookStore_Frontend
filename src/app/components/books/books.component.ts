@@ -18,7 +18,7 @@ export class BooksComponent implements OnChanges{
 
   //for pagination
   currentPage = 1;
-  pageSize = 6;
+  pageSize = 8;
   originalBooks: any[] = [];
 
   //search

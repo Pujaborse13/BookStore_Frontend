@@ -8,7 +8,7 @@
   
   .book-content {
     display: flex;
-    gap: 10px;
+    gap: 20px;
   }
 
   .image-section {
@@ -242,15 +242,15 @@
     cursor: not-allowed;
   }
   
-
 .breadcrumb {
-  margin: 16px auto;
+  margin: 3px auto;
   font-size: 14px;
   color: #888;
   display: flex;
   align-items: center;
   max-width: 850px; 
   padding: 0 16px;
+
 
   .breadcrumb-link {
     cursor: pointer;
@@ -265,5 +265,93 @@
     margin-left: 4px;
     font-weight: 500;
     color:black;    
+  }
+}
+
+
+// Responsive 
+// Mobile: 
+@media (max-width: 600px) {
+  .book-content {
+    flex-direction: column;
+  }
+
+  .image-section,
+  .details-section {
+    width: 100%;
+  }
+
+  .thumbnails {
+    display: none; /* Hide thumbnails on mobile */
+  }
+
+  .main-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn {
+    max-width: 100%;
+  }
+
+  .breadcrumb {
+    padding: 0 8px;
+    font-size: 13px;
+  }
+}
+
+/* Tablet: 600px–960px */
+@media (min-width: 601px) and (max-width: 800px) 
+{
+  .book-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .image-section {
+    width: 50%;
+  }
+
+  .details-section {
+    width: 100%;
+  }
+
+  .main-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .thumbnails {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .thumbnail {
+    width: 40px;
+    height: 60px;
+  }
+}
+
+/* Desktop: ≥961px */
+@media (min-width: 961px) {
+  .image-section {
+    width: 40%;
+  }
+
+  .details-section {
+    width: 75%;
+  }
+
+  .thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .thumbnail {
+    width: 50px;
+    height: 70px;
   }
 }
