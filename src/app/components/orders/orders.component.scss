@@ -85,19 +85,26 @@
   }
   
   .breadcrumb {
+    margin: 16px auto;
     font-size: 14px;
-    color: gray;
-    margin-bottom: 10px;
+    color: #888;
     display: flex;
-    
-  }
+    align-items: center;
+    max-width: 850px; 
+    padding: 0 16px;
   
-  .breadcrumb-link {
-    cursor: pointer;
-    color: gray;
-    margin-right: 4px;
-  }
+    .breadcrumb-link {
+      cursor: pointer;
+      color: #666;
+      transition: color 0.2s;
+      &:hover {
+        color: #000;
+      }
+    }
   
-  .breadcrumb-link:hover {
-    text-decoration: underline;
+    .current-page {
+      margin-left: 4px;
+      font-weight: 500;
+      color:black;    
+    }
   }
