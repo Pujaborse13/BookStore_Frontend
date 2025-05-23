@@ -60,6 +60,12 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  
+  // go to home page
+  goToHome() {
+    this.router.navigate(['/dashboard']);
+  }
+  
   ngOnDestroy(): void 
   {
     if (this.cartCountSub) 

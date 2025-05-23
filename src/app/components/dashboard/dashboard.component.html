@@ -1,9 +1,9 @@
 <div class="dashboard-container">
-    <!-- Top Navbar -->
     
+    <!-- Top Navbar -->
     <div class="navbar">
       <!-- Logo Section -->
-      <div class="logo">
+      <div class="logo" (click)="goToHome()" style="cursor: pointer;">
         <img src="assets/education.png" alt="Bookstore Logo" />
         <span>Bookstore</span>
       </div>
@@ -17,17 +17,17 @@
         </div>
       </div>
   
-       <!-- Right-side Icons -->
-    <div class="nav-actions">
-      <!-- Profile Menu -->
+      <!-- Right-side Icons -->
+       <div class="nav-actions">
+      
+    <!-- Profile Menu -->
       <div class="nav-item profile-menu" [matMenuTriggerFor]="profileMenu">
-        <mat-icon>person</mat-icon>
+        <mat-icon class="material-icons-outlined">person</mat-icon>
         <span>{{ userName }}</span>
       </div>
 
 
       <!-- profile click options  -->
-
       <mat-menu #profileMenu="matMenu">
         <div class="menu-header">Hello {{ userName }},</div>
         
@@ -37,36 +37,33 @@
         </button> -->
 
         <button mat-menu-item (click)="goToOrders()">
-          <mat-icon>shopping_bag</mat-icon>
+          <mat-icon class="material-icons-outlined">shopping_bag</mat-icon>
           <span>My Orders</span>
         </button>
 
         <button mat-menu-item (click)="goToWishlist()">
-          <mat-icon>favorite</mat-icon>
+          <mat-icon class="material-icons-outlined">favorite</mat-icon>
           <span>Wishlist</span>
         </button>
         
-        <button mat-menu-item (click)="logout()" class="logout-button">
-          <mat-icon>logout</mat-icon>
-          <span>Logout</span>
-        </button>
+        <div class="custom-logout-wrapper">
+          <button mat-button class="logout-button" (click)="logout()">Logout</button>
+        </div>
+        
+
       </mat-menu>
 
 
-       <!-- cart icon -->
-       <div class="icon-with-label">
-        <button mat-icon-button
-              [matBadge]="cartItemCount"
-              matBadgeColor="accent"
-              matBadgeOverlap="false"
-              [matBadgeHidden]="cartItemCount === 0"
-              (click)="goToCart()">
-        <mat-icon>shopping_cart</mat-icon>
-        </button>
-        <span class="label">Cart</span>
-      </div>
-      
-
+        <!-- Cart icon -->
+        <div class="nav-item cart-menu" (click)="goToCart()">
+          <mat-icon class="material-icons-outlined" matBadge="{{ cartItemCount }}"
+                    matBadgeColor="accent"
+                    matBadgeOverlap="false"
+                    [matBadgeHidden]="cartItemCount === 0">
+            shopping_cart
+          </mat-icon>
+          <span>Cart</span>
+        </div>
     </div>
   </div>
 
