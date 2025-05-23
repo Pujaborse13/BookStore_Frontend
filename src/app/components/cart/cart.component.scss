@@ -12,25 +12,30 @@
     
   }
   
-  .breadcrumb-link {
-    cursor: pointer;
-    color: gray;
-    margin-right: 4px;
-  }
+  .breadcrumb {
+    margin: 16px auto;
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    max-width: 850px; 
+    padding: 0 16px;
   
-  .breadcrumb-link:hover {
-    text-decoration: underline;
-  }
+    .breadcrumb-link {
+      cursor: pointer;
+      color: #666;
+      transition: color 0.2s;
+      &:hover {
+        color: #000;
+      }
+    }
   
-  .current-page {
-    font-weight: 600;
-    color: #000;
+    .current-page {
+      margin-left: 4px;
+      font-weight: 500;
+      color:black;
+    }
   }
-
-  h2 {
-    cursor: pointer;
-  }
-  
   
   
 
@@ -71,11 +76,28 @@
     margin-bottom: 15px;
   
     .location-field {
-      width: 230px;
-      font-size: 13px;
-
+      width: 250px;
+      height: 36px; // reduce overall height
+      font-size: 12px;
+  
+      ::ng-deep .mat-form-field-wrapper {
+        padding-bottom: 0;
+        padding-top: 0;
+      }
+  
+  
+      ::ng-deep .mat-icon {
+        font-size: 16px;
+        color: rgb(174, 20, 20); 
+        margin-right: 2px; 
+      }
+  
+      ::ng-deep .mat-form-field-label {
+        font-size: 12px; 
+      }
     }
   }
+  
 
 
  
@@ -87,8 +109,8 @@
     margin-bottom: 16px;
   
     img {
-      width: 80px;
-      height: 120px;
+      width: 100px;
+      height: 150px;
       object-fit: cover;
       border-radius: 4px;
     }
@@ -137,7 +159,6 @@
   .place-order {
     display: flex;
     justify-content: flex-end;
-    // margin-top: 10px;
   }
   
 
