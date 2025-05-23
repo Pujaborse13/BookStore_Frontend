@@ -1,10 +1,9 @@
 <div *ngIf="book" class="book-details-container">
 
-      <div class="breadcrumb">
-        <span class="breadcrumb-link" (click)="goToDashboard()">Home</span> /Book({{ book.id }})
-        <!-- <a routerLink="/dashboard" class="breadcrumb-link">Home</a> / Book {{ book.id }} -->
-
-      </div>
+   <!-- home / cart -->
+    <div class="breadcrumb">
+      <span class="breadcrumb-link" (click)="goToDashboard()">Home</span> /<span class="current-page">Book({{ book.id }})</span>
+    </div>
       
       <div class="book-content">
 
@@ -17,10 +16,16 @@
           <img [src]="book.bookImage" alt="{{ book.bookName }}" class="main-image" />
 
           <div class="action-buttons">
-            <ng-container *ngIf="!isInCart; else quantityBlock">
-              <button class="btn add-to-bag" (click)="addToCart(book.id)">ADD TO BAG</button>
+            <ng-container *ngIf="book.quantity === 0; else addToCartBlock">
+              <button class="btn add-to-bag" (click)="notifyMe()">NOTIFY ME</button>
             </ng-container>
-
+            
+            <ng-template #addToCartBlock>
+                <ng-container *ngIf="!isInCart; else quantityBlock">
+                  <button class="btn add-to-bag" (click)="addToCart(book.id)">ADD TO BAG</button>
+                </ng-container>
+            </ng-template>
+            
             <ng-template #quantityBlock>
               <div class="quantity-container">
                 <button class="qty-btn" (click)="updateQuantity('dec')">−</button>

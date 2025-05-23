@@ -139,6 +139,12 @@ getBookByBookId(id: number) {
       });
     }
     
-    
+    notifyMe() {
+      this.snackBar.open("We'll get back to you when the book is available.", 'Close', {
+        duration: 3000, // 3 seconds
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
+    }
 
 }
