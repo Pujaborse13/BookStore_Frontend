@@ -22,15 +22,19 @@
 
     <!-- Book cards -->
   <div class="books-grid">
+    
     <div class="book-card" *ngFor="let book of filteredBooks | slice:(currentPage - 1) * pageSize:(currentPage) * pageSize" (click)="onBookClick(book.id)">
-      <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />
-
-      <div class="book-info">
+       <div class="book-image-wrapper">
+          <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" [class.dimmed]="book.quantity === 0"/>
+          
+          <div *ngIf="book.quantity === 0" class="stock-overlay">OUT OF STOCK</div>
+        </div>
+       <div class="book-info">
         <h3>{{ book.bookName }}</h3>
         <p class="author">by {{ book.author }}</p>
 
               <div class="rating-box">
-                <span class="rating-value">4.5 <mat-icon class="star-icon">star</mat-icon></span>
+                <span class="rating-value"> 4.5 <mat-icon class="star-icon">star</mat-icon></span>
                 <span class="rating-count">(20)</span>
               </div>
 
@@ -38,7 +42,6 @@
                 <span class="new">Rs. {{ book.discountPrice }}</span>
                 <span class="old">Rs. {{ book.price }}</span>
               </div>
-            <div *ngIf="book.quantity === 0" class="stock-overlay">OUT OF STOCK</div>
           </div>
        </div>
     
@@ -51,10 +54,10 @@
         <button
           *ngFor="let page of pages"
           [class.active]="page === currentPage"
-          (click)="changePage(page)"
-        >
-          {{ page }}
+          (click)="changePage(page)"> {{ page }}
         </button>
 
         <button (click)="nextPage()" [disabled]="currentPage === totalPages">&#8250;</button>
 </div>
+
+ 
