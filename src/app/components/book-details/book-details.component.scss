@@ -5,11 +5,6 @@
     font-family: 'Segoe UI', sans-serif;
   }
   
-  .breadcrumb {
-    font-size: 14px;
-    color: gray;
-    margin-bottom: 10px;
-  }
   
   .book-content {
     display: flex;
@@ -39,8 +34,8 @@
   }
 
   .main-image {
-    width: 280px;     /* or try 300px if you want it larger */
-    height: 370px;    /* or adjust as needed for proportion */
+    width: 280px;     
+    height: 370px;  
     border: 1px solid #ccc;
     padding: 5px;
     object-fit: contain;
@@ -63,14 +58,20 @@
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    flex-wrap: wrap;
+    width: 100%;
   }
   
   .btn {
-    padding: 10px 20px;
+    padding: 10px 0;
     border: none;
     cursor: pointer;
     font-weight: bold;
+    flex: 1 1 100%; /* Full width by default */
+    max-width: 140px; /* Match image width */
+    text-align: center;
   }
+  
   
   .add-to-bag {
     background-color: #a52a2a;
@@ -233,4 +234,36 @@
   }
   
 
+  //add to bag disable button
+  .btn.add-to-bag.disabled {
+    background-color: #a52a2a;  /* same as enabled add-to-bag */
+    color: white;
+    opacity: 0.6;               /* slightly faded to indicate disabled */
+    cursor: not-allowed;
+  }
   
+
+.breadcrumb {
+  margin: 16px auto;
+  font-size: 14px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  max-width: 850px; 
+  padding: 0 16px;
+
+  .breadcrumb-link {
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .current-page {
+    margin-left: 4px;
+    font-weight: 500;
+    color:black;    
+  }
+}
