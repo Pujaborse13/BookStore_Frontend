@@ -22,7 +22,7 @@
     background-color: #a03037;
     padding: 10px 30px;
     color: white;
-  height: 40px; /* Set fixed height */
+    height: 40px; /* Set fixed height */
 
   }
   
@@ -101,7 +101,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 1px;
   }
   
   .menu-header {
@@ -139,8 +139,6 @@
  
    }
   
-
-   
   
 .nav-item span, .cart-menu span {
   margin-top: 4px;
