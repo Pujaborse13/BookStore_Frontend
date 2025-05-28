@@ -1,0 +1,12 @@
+<!-- <div class="loader-overlay" *ngIf="loader.isLoading | async">
+    <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+  </div> -->
+  
+  <div class="loader-overlay" *ngIf="loader.isLoading | async">
+    <mat-progress-spinner 
+      mode="indeterminate" 
+      color="warn" 
+      [diameter]="40">
+    </mat-progress-spinner>
+  </div>
+  

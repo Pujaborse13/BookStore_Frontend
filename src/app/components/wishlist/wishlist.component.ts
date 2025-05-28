@@ -30,13 +30,19 @@ export class WishlistComponent implements OnInit  {
 
   getAllWishList() {
     this.bookService.getAllWishlistBooks().subscribe({
+
       next: (response: any) => {
-        if (response.success && response.data?.items) {
-          this.books = response.data.items;
+        if (response.success) {
+            this.books = response.data?.items || [];
+
+        if (this.books.length === 0) {
+          this.snackBar.open("Your wishlist is empty", 'Close', {
+            duration: 3000,
+          });
+        }
           console.log("Wishlist books fetched:", this.books);
         } else {
-          this.books = [];
-          this.snackBar.open(response.message || "Wishlist is empty", 'Close', {
+          this.snackBar.open(response.message || "Failed to fetch wishlist", 'Close', {
             duration: 3000,
           });
         }

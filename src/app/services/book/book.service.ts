@@ -112,8 +112,8 @@ export class BookService {
       })
     };
     console.log('Headers:', httpOption);
-    return this.http.getApi('/api/cart', httpOption.headers)
-    .pipe(tap(() => this.loadCartCount()));
+    return this.http.getApi('/api/cart', httpOption.headers);
+    //.pipe(tap(() => this.loadCartCount()));
   }
 
 
@@ -137,7 +137,8 @@ export class BookService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.deleteApi(`/api/cart/${bookId}`, httpOptions.headers);
+    return this.http.deleteApi(`/api/cart/${bookId}`, httpOptions.headers)
+    .pipe(tap(() => this.loadCartCount()));
   }
 
 
@@ -238,14 +239,14 @@ export class BookService {
     return this.http.getApi(`/api/book/search?searchTerm=${searchTerm}`, httpOption.headers);
   }
   
-  
-  
+
    // Load and update the cart count BehaviorSubject
    loadCartCount() {
     this.getAllCartBooks().subscribe({
       next: (res: any) => {
         if (res.success && res.data?.items) {
-          const count = res.data.items.length; // Only count distinct items
+          const count = res.data.items.reduce((acc: number, item: any) => acc + item.quantity, 0);
+         // const count = res.data.items.length; // Only count distinct items
           this.cartCountSubject.next(count);
         } else {
           this.cartCountSubject.next(0);

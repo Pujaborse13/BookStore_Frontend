@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookService } from 'src/app/services/book/book.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { OnInit } from '@angular/core';
+
 
 
 interface CustomerDetailsModel {
@@ -19,7 +21,7 @@ interface CustomerDetailsModel {
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
+export class CartComponent  implements OnInit {
 
   constructor(private bookService: BookService, private router: Router, private snackBar: MatSnackBar) {}
   
@@ -43,7 +45,7 @@ export class CartComponent {
   
 
   ngOnInit() {
-    this.getAllCart();
+   this.getAllCart();
   }
 
   expandAddressSection() {
@@ -60,6 +62,9 @@ export class CartComponent {
       next: (response: any) => {
         if (response.success) {
           this.books = response.data.items || [];  
+          if (this.books.length === 0) {
+            console.log("Cart is empty.");
+          } else
           console.log("Cart books:", this.books);
         } else {
           console.log('Cart fetch returned no success:', response.message);
@@ -78,9 +83,6 @@ export class CartComponent {
   getTotalQuantity(): number {
     return this.books.reduce((total, item) => total + item.quantity, 0);
   }
-
-  
-
 
 
   // go to home page

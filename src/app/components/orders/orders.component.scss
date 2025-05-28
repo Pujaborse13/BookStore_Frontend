@@ -81,8 +81,30 @@
   .no-orders {
     text-align: center;
     font-size: 18px;
-    color: #888;
+    color: #454343;
+    margin-top: 40px;
+  
+    .empty-orders-image {
+      max-width: 300px;
+      margin-bottom: 30px;
+    }
+  
+    .shop-now-button {
+      background-color: #d32f2f; // red
+      color: white;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #b71c1c;
+      }
+    }
   }
+  
   
   .breadcrumb {
     margin: 16px auto;

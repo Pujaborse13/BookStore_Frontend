@@ -65,11 +65,25 @@ getBookByBookId(id: number) {
         },
         error: (err) => {
           console.error('Error adding to cart:', err);
-          this.snackBar.open('Failed to add book to cart.', 'Close', {
-            duration: 3000,
-            verticalPosition: 'bottom',
-            panelClass: ['snackbar-error']
-          });
+          if (err.status === 409) {
+            this.snackBar.open('This book is already in your wishlist.', 'Close', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              panelClass: ['snackbar-warning']
+            });
+          } else if (err.status === 400) {
+            this.snackBar.open('The selected book does not exist.', 'Close', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              panelClass: ['snackbar-error']
+            });
+          } else {
+            this.snackBar.open('Failed to add book to wishlist.', 'Close', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              panelClass: ['snackbar-error']
+            });
+          }
         }
       });
     }
@@ -122,13 +136,15 @@ getBookByBookId(id: number) {
         },
         error: (err) => {
           console.error('Error adding to wishlist:', err);
-          if (err.status === 409 && err.error?.message?.includes('already exists')) {
-            this.snackBar.open('Book already exists in wishlist.', 'Close', {
+          
+          if (err.status === 409 && err.error?.message?.includes('already in your wishlist')) {
+            this.snackBar.open('This book is already in your wishlist.', 'Close', {
               duration: 3000,
               verticalPosition: 'bottom',
               panelClass: ['snackbar-warning']
             });
-          } else {
+          }
+           else {
             this.snackBar.open('Failed to add book to wishlist.', 'Close', {
               duration: 3000,
               verticalPosition: 'bottom',

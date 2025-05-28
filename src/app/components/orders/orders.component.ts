@@ -28,10 +28,16 @@ export class OrdersComponent {
   fetchOrders() {
     this.bookService.getAllOrders().subscribe({
       next: (response: any) => {
-        if (response.success) {
+        if (response.success && response.data && response.data.length > 0) {
           this.orders = response.data;
-        } else {
-          this.snackBar.open(response.message || 'No orders found.', 'Close', {
+          this.snackBar.open(response.message || 'Orders loaded successfully.', 'Close', {
+            duration: 3000,
+            panelClass: ['snackbar-success']
+          });
+        } 
+      else {
+        this.orders = []; //clear orders if none found
+         this.snackBar.open(response.message || "You haven't placed any orders yet.", 'Close', {
             duration: 3000,
             panelClass: ['snackbar-warning']
           });

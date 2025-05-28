@@ -172,7 +172,7 @@
         <img src="assets/images/order.png" alt="Order Success" class="success-image" />
         <h2>Hurray!!! Your order is confirmed</h2>
         <p>The order id is #{{ orderId }}. Save the order id for further communication...</p>
-        <button mat-raised-button color="primary" routerLink="/dashboard/books">Continue Shopping</button>
+        <button mat-raised-button routerLink="/dashboard/books">Continue Shopping</button>
       </div>
     </ng-container>
   </ng-template>
@@ -181,9 +181,9 @@
     <!-- Empty Cart UI -->
     <ng-template #emptyCart>
       <div class="empty-message">
-        <img src="assets/images/emptycart3.png" alt="cart empty" class="emptyCart-image" />
+        <img src="assets/images/emptycart1.png" alt="cart empty" class="emptyCart-image" />
         <h2>Your cart is Empty!</h2>
-        <button mat-raised-button color="accent" routerLink="/dashboard/books">Browse Books</button>
+        <button mat-raised-button color="warn" routerLink="/dashboard/books">Browse Books</button>
       </div>
   
     </ng-template>

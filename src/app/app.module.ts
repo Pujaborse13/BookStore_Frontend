@@ -15,7 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BooksComponent } from './components/books/books.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
@@ -29,6 +29,10 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 
@@ -42,7 +46,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     BookDetailsComponent,
     CartComponent,
     OrdersComponent,
-    WishlistComponent
+    WishlistComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -66,13 +71,14 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatButtonModule,
     MatMenuModule,
     MatBadgeModule, 
-    
+    MatProgressSpinnerModule    
 
 
 
     
   ],
-  providers: [],
+  providers: [    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

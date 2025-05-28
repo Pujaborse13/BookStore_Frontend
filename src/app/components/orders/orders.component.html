@@ -1,11 +1,13 @@
-  <div class="orders-wrapper" *ngIf="!isLoading; else loading">
+  <div class="orders-wrapper">
      <!-- home / cart -->
      <div class="breadcrumb">
       <span class="breadcrumb-link" (click)="goToDashboard()">Home</span> / <span class="current-page">My orders</span>
      </div>
 
     <div *ngIf="orders.length === 0" class="no-orders">
-      <p>No orders found.</p>
+        <img src="assets/images/NoOrder.png" alt="No Orders" class="empty-orders-image" />
+        <p>You haven't placed any orders yet.</p>
+        <button class="shop-now-button" (click)="goToDashboard()">Shop Now</button>
     </div>
   
     <div *ngFor="let order of orders" class="order-card">
@@ -31,7 +33,5 @@
     </div>
   </div>
   
-  <ng-template #loading>
-    <p>Loading order history...</p>
-  </ng-template>
+  
   

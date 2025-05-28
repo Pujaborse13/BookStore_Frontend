@@ -27,7 +27,7 @@
   .wishlist-wrapper {
     display: flex;
     justify-content: center;
-    padding: 0 16px;
+    padding: 0 10px;
   }
   
   .wishlist-container {
@@ -37,10 +37,10 @@
   
   .wishlist-header {
     background: #f4f4f4;
-    padding: 12px 16px;
+    padding: 6px 8px;
     font-weight: 600;
     font-size: 18px;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
     margin: 0 0 0px 0; 
     border-radius: 0;
   }
@@ -48,14 +48,14 @@
   .wishlist-item {
     margin-top: 0px;
   }
-  .wishlist-item + .wishlist-item {
-    margin-top: 16px; // Only apply margin between items, not the first one
-  }
+  // .wishlist-item + .wishlist-item {
+  //   margin-top: 0px; // Only apply margin between items, not the first one
+  // }
   
   .book-card {
     display: flex;
     justify-content: space-between;
-    padding: 10px 16px;
+    padding: 15px 8px;
     border: 1px solid #e0e0e0;
     border-radius: 0px;
     box-shadow: none;
@@ -120,10 +120,34 @@
   }
   
   mat-icon {
-    color: #aaa;
+    color: #b71414;
     transition: color 0.2s;
     &:hover {
-      color: gray;
+      color: rgb(152, 93, 93);
     }
+  }
+  
+  .emptywishlist-image {
+    width: 200px;     
+    height: auto;
+    margin-bottom: 5px;
+  }
+  
+  .empty-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px; // Adjust based on your layout
+    padding: 10px;
+  }
+  
+  .empty-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   }
   

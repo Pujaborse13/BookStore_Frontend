@@ -1,5 +1,3 @@
-
- 
   <div class="breadcrumb">
     <span class="breadcrumb-link" (click)="goToDashboard()">Home</span> /
     <span class="current-page">My Wishlist</span>
@@ -12,8 +10,18 @@
         <h2>My Wishlist ({{ books.length }})</h2>
       </mat-card>
   
+       <!--  Show this message when wishlist is empty -->
+    <div *ngIf="books.length === 0" class="empty-message">
+      <mat-card class="empty-card">
+      <img src="assets/images/Ewishlist.png" alt="wishlist empty" class="emptywishlist-image" />
+        <h2>Your wishlist is Empty!</h2>
+        <p>Explore more and shortlist some items<p>
+        <button mat-raised-button color="warn" routerLink="/dashboard/books">Explore</button>
+      </mat-card>
+    </div>
+
+
       <div *ngFor="let book of books" class="wishlist-item">
-       
         <mat-card class="book-card">
           <div class="book-info">
             <img [src]="book.bookImage" alt="{{ book.bookName }}" class="book-image" />
@@ -27,9 +35,12 @@
             </div>
           </div>
   
+        <!-- <div class="delete-container"> -->
           <button mat-icon-button class="delete-button" (click)="removeFromWishlist(book.bookId)">
-            <mat-icon >delete</mat-icon>
+            <mat-icon class="material-icons-outlined">delete</mat-icon>
           </button>
+        <!-- </div> -->
+        
         </mat-card>
       </div>
     </div>
